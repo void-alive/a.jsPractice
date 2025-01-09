@@ -84,11 +84,15 @@ $(document).ready(function () {
 
   // 필터 버튼 클릭 이벤트 처리
   $filterBtns.on("click", function () {
+    // category 변수에 선택한 버튼의 데이터 id를 가져옴
     const category = $(this).data("id");
 
+    // category가 all이라면 모든 메뉴를 보여줌
     if (category === "all") {
       displayMenuItems(menu);
     } else {
+      // category가 all이 아니라면 현재 category를 menuItem.category에 넣음
+      // 이후 그에 맞는 값 출력
       const menuCategory = menu.filter(function (menuItem) {
         return menuItem.category === category;
       });
@@ -99,6 +103,9 @@ $(document).ready(function () {
   // 메뉴를 화면에 표시하는 함수
   function displayMenuItems(menuItems) {
     const displayMenu = menuItems
+    // .map() : callback 함수를 각각의 요소에 대해 한번씩 불러 
+    //   그 함수의 반환값으로 새로운 배열을 만듦
+    // callback 함수 : 값이 삭제되거나 값이 할당/ 정의되지 않은 인덱스는 호출 x
       .map(function (item) {
         return `<article class="menu-item">
           <img src=${item.img} alt=${item.title} class="photo" />
@@ -113,8 +120,16 @@ $(document).ready(function () {
           </div>
         </article>`;
       })
+      // .get() : map 객체에서 특정 요소 반환
+      //   주어진 키와 관련된 값이 객체라면 객체에 대한 참조만 가져오고
+      //   객체에 대한 모든 변경은 map 안에서 수정
+      // 키:값이 있을 때 키를 입력하면 값을 반환함 
+      // .join() : 배열의 모든 요소를 구분 문자열로 구분해서 연결한 새 문자열 반환
+      //   배열에 항목이 하나만 있는 경우 구분 기호 사용 x
+      //   요소가 undefined 거나 null 이면 빈 문자열로 변환
       .join("");
 
+      // sectionCenter의 html 값을 displayMenu로 바꿈
     $sectionCenter.html(displayMenu);
   }
 });
