@@ -105,6 +105,7 @@ $(document).ready(function () {
     const displayMenu = menuItems
     // .map() : callback 함수를 각각의 요소에 대해 한번씩 불러 
     //   그 함수의 반환값으로 새로운 배열을 만듦
+    //   [img, title, price, desc]의 배열 생성
     // callback 함수 : 값이 삭제되거나 값이 할당/ 정의되지 않은 인덱스는 호출 x
       .map(function (item) {
         return `<article class="menu-item">
