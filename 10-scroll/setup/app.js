@@ -3,11 +3,20 @@
 // slice extracts a section of a string without modifying original string
 //offsetTop - A Number, representing the top position of the element, in pixels
 
-// ********** set date ************
+$(document).ready(function () {
+  // ********** set date ************
+  $("#date").text(new Date().getFullYear());
+  // ********** close links ************
+  $(".nav-toggle").on("click", function () {
+    $(".links-container").toggleClass("show-links");
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+    const linksHeight = links.getBoundingClientRect().height;
+    if(containerHeight === 0){
+      $(this).height(linksHeight);
+    }
+  });
+  // ********** fixed navbar ************
 
-// ********** close links ************
-
-// ********** fixed navbar ************
-
-// ********** smooth scroll ************
-// select links
+  // ********** smooth scroll ************
+  // select links
+});
