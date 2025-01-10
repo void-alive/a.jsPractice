@@ -16,6 +16,15 @@ $(document).ready(function () {
     }
   });
   // ********** fixed navbar ************
+  const topLink = document.querySelector(".top-link");
+  const scrollHeight = window.pageYOffset;
+  const navHeight = navbar.getBoundingClientRect().height;
+  if(scrollHeight>navHeight){
+    $(".navbar").toggleClass("fixed-nav");
+  }
+  if(scrollHeight>500){
+    $(".top-link").toggleClass("show-link");
+  }
 
   // ********** smooth scroll ************
   // select links
